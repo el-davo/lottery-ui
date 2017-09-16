@@ -1,0 +1,48 @@
+version: '2'
+
+services:
+
+  lottery-db:
+    image: mysql
+    command: mysqld --user=root --verbose
+    ports:
+      - 3306:3306
+    environment:
+      MYSQL_DATABASE: "lottery"
+      MYSQL_USER: "username"
+      MYSQL_PASSWORD: "password"
+      MYSQL_ROOT_PASSWORD: "root"
+      MYSQL_ALLOW_EMPTY_PASSWORD: "yes"
+
+  phpmyadmin:
+    image: phpmyadmin/phpmyadmin
+    links:
+      - lottery-db
+    ports:
+      - 8001:80
+    environment:
+      PMA_HOST: lottery-db
+      PMA_PORT: 3306
+      MYSQL_USERNAME: username
+      MYSQL_ROOT_PASSWORD: password
+
+  lottery-api:
+      image: lottery-api:latest
+      depends_on:
+        - lottery-db
+      environment:
+        - NODE_ENV=production
+        - sql_database=lottery
+        - sql_hostname=172.18.0.1
+        - sql_username=username
+        - sql_password=password
+      ports:
+        - 3000:3000
+      volumes:
+        - yarn:/root/.cache/yarn
+      user: node
+      command: >
+        /bin/bash -c "sleep 5; node ."
+volumes:
+  lottery-db:
+  yarn:

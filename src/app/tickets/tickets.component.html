@@ -1,0 +1,20 @@
+<div class="main-container">
+  <div class="content-container">
+    <div class="content-area">
+      <router-outlet></router-outlet>
+    </div>
+    <clr-vertical-nav>
+      <label class="nav-header">Unchecked</label>
+      <a clrVerticalNavLink
+         [routerLink]="ticket.id"
+         *ngFor="let ticket of (tickets$ | async)?.uncheckedTickets"
+         routerLinkActive="active">{{ticket.id}}</a>
+
+      <label class="nav-header">Checked</label>
+      <a clrVerticalNavLink
+         [routerLink]="ticket.id"
+         *ngFor="let ticket of (tickets$ | async)?.checkedTickets"
+         routerLinkActive="active">{{ticket.id}}</a>
+    </clr-vertical-nav>
+  </div>
+</div>

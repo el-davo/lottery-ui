@@ -885,19 +885,17 @@ clap@^1.0.9:
   dependencies:
     chalk "^1.1.3"
 
-clarity-angular@^0.9.15:
-  version "0.9.15"
-  resolved "https://registry.yarnpkg.com/clarity-angular/-/clarity-angular-0.9.15.tgz#aa33b2c3baaeab9fe929d78253d3ad888822f4cf"
+clarity-angular@^0.10.5:
+  version "0.10.5"
+  resolved "https://registry.yarnpkg.com/clarity-angular/-/clarity-angular-0.10.5.tgz#53ec6c11ca89554967a439b823ae837e71edf0bd"
 
-clarity-icons@^0.9.15:
-  version "0.9.15"
-  resolved "https://registry.yarnpkg.com/clarity-icons/-/clarity-icons-0.9.15.tgz#168705294653dbf7bd9d137010d9980efaaf1867"
-  dependencies:
-    dompurify "^0.9.0"
+clarity-icons@^0.10.5:
+  version "0.10.5"
+  resolved "https://registry.yarnpkg.com/clarity-icons/-/clarity-icons-0.10.5.tgz#a141090bbd75880b0fc5d293a9d0a2d8467688b6"
 
-clarity-ui@^0.9.15:
-  version "0.9.15"
-  resolved "https://registry.yarnpkg.com/clarity-ui/-/clarity-ui-0.9.15.tgz#a2337b19acd485492f6ef210c8eef7de160b463f"
+clarity-ui@^0.10.5:
+  version "0.10.5"
+  resolved "https://registry.yarnpkg.com/clarity-ui/-/clarity-ui-0.10.5.tgz#c3424e334460a3896b5cb5f6c6f745a948ffd80c"
 
 clean-css@4.1.x:
   version "4.1.6"
@@ -1567,10 +1565,6 @@ domhandler@2.1:
   resolved "https://registry.yarnpkg.com/domhandler/-/domhandler-2.1.0.tgz#d2646f5e57f6c3bab11cf6cb05d3c0acf7412594"
   dependencies:
     domelementtype "1"
-
-dompurify@^0.9.0:
-  version "0.9.0"
-  resolved "https://registry.yarnpkg.com/dompurify/-/dompurify-0.9.0.tgz#470f9dd95657a644a84be1ed950677946259d055"
 
 domutils@1.1:
   version "1.1.6"

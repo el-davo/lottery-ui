@@ -1,0 +1,18 @@
+<table class="table">
+  <thead>
+  <tr>
+    <th>Line #</th>
+    <th>Number 1</th>
+    <th>Number 2</th>
+    <th>Number 3</th>
+    <th>Result</th>
+  </tr>
+  </thead>
+  <tbody>
+  <tr *ngFor="let line of (tickets$ | async)?.selectedTicket?.lines; let i = index">
+    <td>{{i + 1}}</td>
+    <td *ngFor="let number of line.numbers">{{number.number}}</td>
+    <td>{{line.result}}</td>
+  </tr>
+  </tbody>
+</table>

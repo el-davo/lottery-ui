@@ -1,17 +1,19 @@
-import {ReleaseTogglesComponent} from './release-toggles/release-toggles.component';
-import {ReleaseToggleComponent} from './release-toggle/release-toggle.component';
+import {TicketsComponent} from './tickets/tickets.component';
+import {SelectedTicketComponent} from './tickets/selected-ticket/selected-ticket.component';
 
 export const routes = [
   {
     path: '',
-    redirectTo: '/release-toggles',
+    redirectTo: '/tickets',
     pathMatch: 'full'
   }, {
-    path: 'release-toggles',
-    component: ReleaseTogglesComponent
-  },
-  {
-    path: 'release-toggles/:id',
-    component: ReleaseToggleComponent
+    path: 'tickets',
+    component: TicketsComponent,
+    children: [
+      {
+        path: ':id',
+        component: SelectedTicketComponent
+      }
+    ]
   }
 ];
