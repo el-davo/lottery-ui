@@ -1,0 +1,40 @@
+<clr-modal [clrModalClosable]="false"
+           [clrModalOpen]="(navbar$ | async)?.showAddTicketModal">
+  <h3 class="modal-title">Create Ticket</h3>
+  <div class="modal-body">
+
+    <form [connect]="['navbar']" autocomplete="off">
+      <section class="form-block">
+        <div class="form-group">
+          <label class="required">Lines</label>
+          <label for="totalLines"
+                 aria-haspopup="true"
+                 role="tooltip">
+            <input type="text"
+                   name="totalLines"
+                   id="totalLines"
+                   ngModel
+                   required
+                   #totalLines="ngModel">
+
+            <span class="tooltip-content">Please enter a name</span>
+          </label>
+        </div>
+      </section>
+    </form>
+
+  </div>
+  <div class="modal-footer">
+    <button type="button" class="btn btn-outline" (click)="hideModal()">Cancel</button>
+    <button type="button"
+            class="btn btn-primary"
+            disabled
+            *ngIf="totalLines?.errors?.required">Ok
+    </button>
+    <button type="button"
+            class="btn btn-primary"
+            *ngIf="!totalLines?.errors?.required"
+            (click)="createTicket()">Ok
+    </button>
+  </div>
+</clr-modal>

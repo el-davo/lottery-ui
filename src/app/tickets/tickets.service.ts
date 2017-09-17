@@ -10,6 +10,10 @@ export class TicketsService {
   constructor(private http: Http) {
   }
 
+  createTicket(totalLines: number): Observable<Ticket> {
+    return this.http.post(`${urls.apiUrl}/tickets`, {totalLines}).map(res => res.json());
+  }
+
   fetchTickets(): Observable<Ticket[]> {
     return this.http.get(`${urls.apiUrl}/tickets`).map(res => res.json());
   }
