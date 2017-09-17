@@ -1,5 +1,6 @@
 import {TicketsState, ticketsState} from './tickets.state';
 import {TicketsActions} from './tickets.actions';
+import {NavbarActions} from '../navbar/navbar.actions';
 
 export const ticketsReducer = (state: TicketsState = ticketsState, action): TicketsState => {
   switch (action.type) {
@@ -33,6 +34,8 @@ export const ticketsReducer = (state: TicketsState = ticketsState, action): Tick
       };
     case TicketsActions.CHECK_TICKET_FAIL:
       return {...state, isCheckingTicket: false};
+    case NavbarActions.CREATE_TICKET_SUCCESS:
+      return {...state, uncheckedTickets: [action.ticket, ...state.uncheckedTickets]};
     default:
       return state;
   }

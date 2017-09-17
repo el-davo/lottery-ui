@@ -21,6 +21,8 @@ import 'clarity-icons';
 import 'clarity-icons/shapes/essential-shapes';
 import {TicketsModule} from './tickets/tickets.module';
 import {TicketsEpic} from './tickets/tickets.epic';
+import {NavbarModule} from './navbar/navbar.module';
+import {NavbarEpic} from './navbar/navbar.epic';
 
 @NgModule({
   declarations: [
@@ -36,10 +38,12 @@ import {TicketsEpic} from './tickets/tickets.epic';
     NgReduxModule,
     NgReduxFormModule,
     TicketsModule,
-    NgReduxRouterModule
+    NgReduxRouterModule,
+    NavbarModule
   ],
   providers: [
-    TicketsEpic
+    TicketsEpic,
+    NavbarEpic
   ],
   bootstrap: [AppComponent]
 })
@@ -47,12 +51,14 @@ export class AppModule {
 
   constructor(private ngRedux: NgRedux<any>,
               ngReduxRouter: NgReduxRouter,
-              private ticketsEpic: TicketsEpic) {
+              private ticketsEpic: TicketsEpic,
+              private navbarEpic: NavbarEpic) {
 
     const epics = combineEpics(
       this.ticketsEpic.fetchTickets,
       this.ticketsEpic.fetchSelectedTicket,
-      this.ticketsEpic.checkTicket
+      this.ticketsEpic.checkTicket,
+      this.navbarEpic.createTicket
     );
 
     const middleware = [
