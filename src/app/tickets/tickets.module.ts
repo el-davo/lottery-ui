@@ -5,13 +5,16 @@ import {RouterModule} from '@angular/router';
 import {TicketsComponent} from './tickets.component';
 import {TicketsActions} from './tickets.actions';
 import {TicketsService} from './tickets.service';
-import { SelectedTicketComponent } from './selected-ticket/selected-ticket.component';
+import {SelectedTicketComponent} from './selected-ticket/selected-ticket.component';
+import {ConfirmCheckModalComponent} from './confirm-check-modal/confirm-check-modal.component';
+import {ClrModalModule} from 'clarity-angular/modal/modal.module';
 
 @NgModule({
   imports: [
     CommonModule,
     ClrVerticalNavModule,
-    RouterModule
+    RouterModule,
+    ClrModalModule
   ],
   providers: [
     TicketsActions,
@@ -19,7 +22,8 @@ import { SelectedTicketComponent } from './selected-ticket/selected-ticket.compo
   ],
   declarations: [
     TicketsComponent,
-    SelectedTicketComponent
+    SelectedTicketComponent,
+    ConfirmCheckModalComponent
   ],
   exports: [
     TicketsComponent

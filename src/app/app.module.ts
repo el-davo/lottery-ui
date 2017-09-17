@@ -51,7 +51,8 @@ export class AppModule {
 
     const epics = combineEpics(
       this.ticketsEpic.fetchTickets,
-      this.ticketsEpic.fetchSelectedTicket
+      this.ticketsEpic.fetchSelectedTicket,
+      this.ticketsEpic.checkTicket
     );
 
     const middleware = [

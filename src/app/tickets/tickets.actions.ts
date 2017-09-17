@@ -12,6 +12,13 @@ export class TicketsActions {
   static FETCH_SELECTED_TICKET_SUCCESS = 'tickets/FETCH_SELECTED_TICKET_SUCCESS';
   static FETCH_SELECTED_TICKET_FAIL = 'tickets/FETCH_SELECTED_TICKET_FAIL';
 
+  static SHOW_CONFIRM_CHECK_MODAL = 'tickets/SHOW_CONFIRM_CHECK_MODAL';
+  static HIDE_CONFIRM_CHECK_MODAL = 'tickets/HIDE_CONFIRM_CHECK_MODAL';
+
+  static CHECK_TICKET = 'tickets/CHECK_TICKET';
+  static CHECK_TICKET_SUCCESS = 'tickets/CHECK_TICKET_SUCCESS';
+  static CHECK_TICKET_FAIL = 'tickets/CHECK_TICKET_FAIL';
+
   fetchTickets() {
     return {type: TicketsActions.FETCH_TICKETS};
   }
@@ -34,5 +41,25 @@ export class TicketsActions {
 
   fetchSelectedTicketFail() {
     return {type: TicketsActions.FETCH_SELECTED_TICKET_FAIL};
+  }
+
+  showConfirmCheckModal() {
+    return {type: TicketsActions.SHOW_CONFIRM_CHECK_MODAL};
+  }
+
+  hideConfirmCheckModal() {
+    return {type: TicketsActions.HIDE_CONFIRM_CHECK_MODAL};
+  }
+
+  checkTicket() {
+    return {type: TicketsActions.CHECK_TICKET};
+  }
+
+  checkTicketSuccess() {
+    return {type: TicketsActions.CHECK_TICKET_SUCCESS};
+  }
+
+  checkTicketFail() {
+    return {type: TicketsActions.CHECK_TICKET_FAIL};
   }
 }

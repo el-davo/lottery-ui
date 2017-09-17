@@ -19,6 +19,20 @@ export const ticketsReducer = (state: TicketsState = ticketsState, action): Tick
       return {...state, isFetchingSelectedTicket: false, selectedTicket: action.ticket};
     case TicketsActions.FETCH_SELECTED_TICKET_FAIL:
       return {...state, isFetchingSelectedTicket: false};
+    case TicketsActions.SHOW_CONFIRM_CHECK_MODAL:
+      return {...state, showConfirmCheckModal: true};
+    case TicketsActions.HIDE_CONFIRM_CHECK_MODAL:
+      return {...state, showConfirmCheckModal: false};
+    case TicketsActions.CHECK_TICKET:
+      return {...state, isCheckingTicket: true};
+    case TicketsActions.CHECK_TICKET_SUCCESS:
+      return {
+        ...state, isCheckingTicket: false, showConfirmCheckModal: false,
+        uncheckedTickets: state.uncheckedTickets.filter(ticket => ticket.id !== state.selectedTicket.id),
+        checkTickets: [...state.checkedTickets, state.selectedTicket]
+      };
+    case TicketsActions.CHECK_TICKET_FAIL:
+      return {...state, isCheckingTicket: false};
     default:
       return state;
   }

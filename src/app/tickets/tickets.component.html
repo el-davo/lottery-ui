@@ -8,13 +8,13 @@
       <a clrVerticalNavLink
          [routerLink]="ticket.id"
          *ngFor="let ticket of (tickets$ | async)?.uncheckedTickets"
-         routerLinkActive="active">{{ticket.id}}</a>
+         routerLinkActive="active">{{ticket.createdAt | date:'short'}}</a>
 
       <label class="nav-header">Checked</label>
       <a clrVerticalNavLink
          [routerLink]="ticket.id"
          *ngFor="let ticket of (tickets$ | async)?.checkedTickets"
-         routerLinkActive="active">{{ticket.id}}</a>
+         routerLinkActive="active">{{ticket.createdAt | date:'short'}}</a>
     </clr-vertical-nav>
   </div>
 </div>

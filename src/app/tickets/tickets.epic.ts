@@ -32,4 +32,15 @@ export class TicketsEpic {
       });
   };
 
+  checkTicket = (action$, store) => {
+    return action$.ofType(TicketsActions.CHECK_TICKET)
+      .mergeMap(() => {
+        const {selectedTicket} = store.getState().tickets;
+
+        return this.ticketsService.checkTicket(selectedTicket)
+          .map(ticket => this.ticketsActions.checkTicketSuccess())
+          .catch(err => Observable.of(this.ticketsActions.checkTicketFail()));
+      });
+  };
+
 }

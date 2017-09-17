@@ -18,4 +18,9 @@ export class TicketsService {
     return this.http.get(`${urls.apiUrl}/tickets/${id}`).map(res => res.json());
   }
 
+  checkTicket(ticket: Ticket) {
+    return this.http.patch(`${urls.apiUrl}/tickets`, {...ticket, checked: true})
+      .map(res => res.json());
+  }
+
 }

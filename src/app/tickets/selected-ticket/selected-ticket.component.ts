@@ -20,4 +20,7 @@ export class SelectedTicketComponent {
 
   @dispatch()
   fetchSelectedTicket = (id: string) => this.ticketActions.fetchSelectedTicket(id);
+
+  @dispatch()
+  showCheckTicketModal = () => this.ticketActions.showConfirmCheckModal();
 }
