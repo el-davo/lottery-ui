@@ -1,7 +1,13 @@
 <div class="main-container">
   <div class="content-container">
     <div class="content-area">
-      <router-outlet></router-outlet>
+      <router-outlet>
+
+        <app-empty *ngIf="(tickets$ | async)?.uncheckedTickets.length === 0 &&
+        (tickets$ | async)?.checkedTickets.length === 0 &&
+        !(tickets$ | async)?.isFetchingTickets"></app-empty>
+
+      </router-outlet>
     </div>
     <clr-vertical-nav>
       <label class="nav-header">Unchecked</label>

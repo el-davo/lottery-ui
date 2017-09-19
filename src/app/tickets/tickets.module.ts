@@ -13,6 +13,7 @@ import {AddLinesModalComponent} from './add-lines-modal/add-lines-modal.componen
 import {FormsModule} from '@angular/forms';
 import {NgReduxFormModule} from '@angular-redux/form/dist/source';
 import {SnotifyService} from 'ng-snotify';
+import { EmptyComponent } from './empty/empty.component';
 
 @NgModule({
   imports: [
@@ -32,7 +33,8 @@ import {SnotifyService} from 'ng-snotify';
     SelectedTicketComponent,
     ConfirmCheckModalComponent,
     ConfirmDeleteModalComponent,
-    AddLinesModalComponent
+    AddLinesModalComponent,
+    EmptyComponent
   ],
   exports: [
     TicketsComponent
