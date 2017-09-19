@@ -8,10 +8,11 @@ import {Injectable} from '@angular/core';
 import {Observable} from 'rxjs/Observable';
 import {TicketsActions} from './tickets.actions';
 import {TicketsService} from './tickets.service';
+import {Router} from '@angular/router';
 
 @Injectable()
 export class TicketsEpic {
-  constructor(private ticketsActions: TicketsActions, private ticketsService: TicketsService) {
+  constructor(private ticketsActions: TicketsActions, private ticketsService: TicketsService, private router: Router) {
   }
 
   fetchTickets = action$ => {
@@ -40,6 +41,20 @@ export class TicketsEpic {
         return this.ticketsService.checkTicket(selectedTicket)
           .map(ticket => this.ticketsActions.checkTicketSuccess())
           .catch(err => Observable.of(this.ticketsActions.checkTicketFail()));
+      });
+  };
+
+  deleteTicket = (action$, store) => {
+    return action$.ofType(TicketsActions.DELETE_TICKET)
+      .mergeMap(() => {
+        const {selectedTicket} = store.getState().tickets;
+
+        return this.ticketsService.deleteTicket(selectedTicket)
+          .map(() => {
+            this.router.navigateByUrl('/');
+            return this.ticketsActions.deleteTicketSuccess(selectedTicket)
+          })
+          .catch(err => Observable.of(this.ticketsActions.deleteTicketFail()));
       });
   };
 

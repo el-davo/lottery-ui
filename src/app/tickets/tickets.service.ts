@@ -27,4 +27,8 @@ export class TicketsService {
       .map(res => res.json());
   }
 
+  deleteTicket(ticket: Ticket): Observable<Ticket> {
+    return this.http.delete(`${urls.apiUrl}/tickets/${ticket.id}`).map(res => res.json());
+  }
+
 }

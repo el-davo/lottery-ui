@@ -8,6 +8,7 @@ import {TicketsService} from './tickets.service';
 import {SelectedTicketComponent} from './selected-ticket/selected-ticket.component';
 import {ConfirmCheckModalComponent} from './confirm-check-modal/confirm-check-modal.component';
 import {ClrModalModule} from 'clarity-angular/modal/modal.module';
+import { ConfirmDeleteModalComponent } from './confirm-delete-modal/confirm-delete-modal.component';
 
 @NgModule({
   imports: [
@@ -23,7 +24,8 @@ import {ClrModalModule} from 'clarity-angular/modal/modal.module';
   declarations: [
     TicketsComponent,
     SelectedTicketComponent,
-    ConfirmCheckModalComponent
+    ConfirmCheckModalComponent,
+    ConfirmDeleteModalComponent
   ],
   exports: [
     TicketsComponent

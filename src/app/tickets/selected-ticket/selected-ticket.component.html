@@ -1,6 +1,9 @@
 <button class="btn btn-outline" (click)="showCheckTicketModal()" *ngIf="!(tickets$ | async)?.selectedTicket?.checked">
   Check
 </button>
+<button class="btn btn-danger-outline" (click)="showDeleteTicketModal()">
+  Delete
+</button>
 
 <table class="table">
   <thead>
@@ -22,3 +25,4 @@
 </table>
 
 <app-confirm-check-modal></app-confirm-check-modal>
+<app-confirm-delete-modal></app-confirm-delete-modal>
