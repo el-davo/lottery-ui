@@ -3,7 +3,7 @@ import {dispatch, select} from '@angular-redux/store';
 import {TicketsActions} from '../tickets.actions';
 import {ActivatedRoute} from '@angular/router';
 import {Observable} from 'rxjs/Observable';
-import {TicketsState} from '../tickets.state';
+import {Ticket, TicketsState} from '../tickets.state';
 
 @Component({
   selector: 'app-selected-ticket',
@@ -23,4 +23,7 @@ export class SelectedTicketComponent {
 
   @dispatch()
   showCheckTicketModal = () => this.ticketActions.showConfirmCheckModal();
+
+  @dispatch()
+  showDeleteTicketModal = (ticket: Ticket) => this.ticketActions.showDeleteTicketModal(ticket);
 }

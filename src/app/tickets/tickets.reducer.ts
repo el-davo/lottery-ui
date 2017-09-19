@@ -36,6 +36,22 @@ export const ticketsReducer = (state: TicketsState = ticketsState, action): Tick
       return {...state, isCheckingTicket: false};
     case NavbarActions.CREATE_TICKET_SUCCESS:
       return {...state, uncheckedTickets: [action.ticket, ...state.uncheckedTickets]};
+    case TicketsActions.SHOW_DELETE_TICKET_MODAL:
+      return {...state, showDeleteTicketModal: true};
+    case TicketsActions.HIDE_DELETE_TICKET_MODAL:
+      return {...state, showDeleteTicketModal: false};
+    case TicketsActions.DELETE_TICKET:
+      return {...state, isDeletingTicket: true};
+    case TicketsActions.DELETE_TICKET_SUCCESS:
+      return {
+        ...state,
+        isDeletingTicket: false,
+        showDeleteTicketModal: false,
+        checkedTickets: state.checkedTickets.filter(ticket => ticket.id !== action.ticket.id),
+        uncheckedTickets: state.uncheckedTickets.filter(ticket => ticket.id !== action.ticket.id)
+      };
+    case TicketsActions.DELETE_TICKET_FAIL:
+      return {...state, isDeletingTicket: false};
     default:
       return state;
   }

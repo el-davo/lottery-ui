@@ -19,6 +19,13 @@ export class TicketsActions {
   static CHECK_TICKET_SUCCESS = 'tickets/CHECK_TICKET_SUCCESS';
   static CHECK_TICKET_FAIL = 'tickets/CHECK_TICKET_FAIL';
 
+  static SHOW_DELETE_TICKET_MODAL = 'tickets/SHOW_DELETE_TICKET_MODAL';
+  static HIDE_DELETE_TICKET_MODAL = 'tickets/HIDE_DELETE_TICKET_MODAL';
+
+  static DELETE_TICKET = 'tickets/DELETE_TICKET';
+  static DELETE_TICKET_SUCCESS = 'tickets/DELETE_TICKETS_SUCCESS';
+  static DELETE_TICKET_FAIL = 'tickets/DELETE_TICKET_FAIL';
+
   fetchTickets() {
     return {type: TicketsActions.FETCH_TICKETS};
   }
@@ -61,5 +68,25 @@ export class TicketsActions {
 
   checkTicketFail() {
     return {type: TicketsActions.CHECK_TICKET_FAIL};
+  }
+
+  showDeleteTicketModal(ticket: Ticket) {
+    return {type: TicketsActions.SHOW_DELETE_TICKET_MODAL, ticket};
+  }
+
+  hideDeleteTicketModal() {
+    return {type: TicketsActions.HIDE_DELETE_TICKET_MODAL};
+  }
+
+  deleteTicket() {
+    return {type: TicketsActions.DELETE_TICKET};
+  }
+
+  deleteTicketSuccess(ticket: Ticket) {
+    return {type: TicketsActions.DELETE_TICKET_SUCCESS, ticket};
+  }
+
+  deleteTicketFail() {
+    return {type: TicketsActions.DELETE_TICKET_FAIL};
   }
 }
