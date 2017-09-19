@@ -7,7 +7,7 @@
     "start": "docker-compose up & ng serve --open",
     "start:hot": "ng serve --open --hmr -e=hmr",
     "build": "ng build --prod",
-    "test": "ng test -sr -cc",
+    "test": "echo \"Not yet implemented\"",
     "test:watch": "ng test -cc",
     "lint": "ng lint",
     "lint:fix": "npm run lint -- -fix",
