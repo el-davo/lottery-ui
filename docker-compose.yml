@@ -42,7 +42,7 @@ services:
         - yarn:/root/.cache/yarn
       user: node
       command: >
-        /bin/bash -c "sleep 5; node ."
+        /bin/bash -c "sleep 10; node ."
 volumes:
   lottery-db:
   yarn:

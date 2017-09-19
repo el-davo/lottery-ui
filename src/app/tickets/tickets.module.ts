@@ -8,14 +8,19 @@ import {TicketsService} from './tickets.service';
 import {SelectedTicketComponent} from './selected-ticket/selected-ticket.component';
 import {ConfirmCheckModalComponent} from './confirm-check-modal/confirm-check-modal.component';
 import {ClrModalModule} from 'clarity-angular/modal/modal.module';
-import { ConfirmDeleteModalComponent } from './confirm-delete-modal/confirm-delete-modal.component';
+import {ConfirmDeleteModalComponent} from './confirm-delete-modal/confirm-delete-modal.component';
+import {AddLinesModalComponent} from './add-lines-modal/add-lines-modal.component';
+import {FormsModule} from '@angular/forms';
+import {NgReduxFormModule} from '@angular-redux/form/dist/source';
 
 @NgModule({
   imports: [
     CommonModule,
     ClrVerticalNavModule,
     RouterModule,
-    ClrModalModule
+    ClrModalModule,
+    FormsModule,
+    NgReduxFormModule
   ],
   providers: [
     TicketsActions,
@@ -25,7 +30,8 @@ import { ConfirmDeleteModalComponent } from './confirm-delete-modal/confirm-dele
     TicketsComponent,
     SelectedTicketComponent,
     ConfirmCheckModalComponent,
-    ConfirmDeleteModalComponent
+    ConfirmDeleteModalComponent,
+    AddLinesModalComponent
   ],
   exports: [
     TicketsComponent

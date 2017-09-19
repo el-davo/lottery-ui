@@ -1,21 +1,21 @@
 <clr-modal [clrModalClosable]="false"
-           [clrModalOpen]="(navbar$ | async)?.showAddTicketModal">
-  <h3 class="modal-title">Create Ticket</h3>
+           [clrModalOpen]="(tickets$ | async)?.showAddLinesModal">
+  <h3 class="modal-title">Add Lines</h3>
   <div class="modal-body">
 
-    <form [connect]="['navbar']" autocomplete="off">
+    <form [connect]="['tickets']" autocomplete="off">
       <section class="form-block">
         <div class="form-group">
           <label class="required">Lines</label>
-          <label for="totalLines"
+          <label for="addLinesTotalLines"
                  aria-haspopup="true"
                  role="tooltip">
             <input type="text"
-                   name="totalLines"
-                   id="totalLines"
+                   name="addLinesTotalLines"
+                   id="addLinesTotalLines"
                    ngModel
                    required
-                   #totalLines="ngModel">
+                   #addLinesTotalLines="ngModel">
           </label>
         </div>
       </section>
@@ -27,12 +27,12 @@
     <button type="button"
             class="btn btn-primary"
             disabled
-            *ngIf="totalLines?.errors?.required">Ok
+            *ngIf="addLinesTotalLines?.errors?.required">Ok
     </button>
     <button type="button"
             class="btn btn-primary"
             *ngIf="!totalLines?.errors?.required"
-            (click)="createTicket()">Ok
+            (click)="addLines()">Ok
     </button>
   </div>
 </clr-modal>

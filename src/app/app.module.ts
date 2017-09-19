@@ -59,7 +59,8 @@ export class AppModule {
       this.ticketsEpic.fetchSelectedTicket,
       this.ticketsEpic.checkTicket,
       this.ticketsEpic.deleteTicket,
-      this.navbarEpic.createTicket
+      this.ticketsEpic.addLinesToTicket,
+      this.navbarEpic.createTicket,
     );
 
     const middleware = [

@@ -58,4 +58,20 @@ export class TicketsEpic {
       });
   };
 
+  addLinesToTicket = (action$, store) => {
+    return action$.ofType(TicketsActions.ADD_LINES)
+      .mergeMap(() => {
+        const {selectedTicket, addLinesTotalLines} = store.getState().tickets;
+
+        return this.ticketsService.addLinesToTicket(selectedTicket, addLinesTotalLines)
+          .mergeMap(() => {
+            return Observable.concat(
+              Observable.of(this.ticketsActions.addLinesSuccess()),
+              Observable.of(this.ticketsActions.fetchSelectedTicket(selectedTicket.id)),
+            )
+          })
+          .catch(err => Observable.of(this.ticketsActions.addLinesFail()));
+      });
+  };
+
 }
