@@ -9,10 +9,14 @@ import {Observable} from 'rxjs/Observable';
 import {TicketsActions} from './tickets.actions';
 import {TicketsService} from './tickets.service';
 import {Router} from '@angular/router';
+import {SnotifyService} from 'ng-snotify';
 
 @Injectable()
 export class TicketsEpic {
-  constructor(private ticketsActions: TicketsActions, private ticketsService: TicketsService, private router: Router) {
+  constructor(private snotifyService: SnotifyService,
+              private ticketsActions: TicketsActions,
+              private ticketsService: TicketsService,
+              private router: Router) {
   }
 
   fetchTickets = action$ => {
@@ -20,7 +24,11 @@ export class TicketsEpic {
       .mergeMap(() => {
         return this.ticketsService.fetchTickets()
           .map(tickets => this.ticketsActions.fetchTicketsSuccess(tickets))
-          .catch(err => Observable.of(this.ticketsActions.fetchTicketsFail()));
+          .catch(() => {
+            this.snotifyService.error(`An error occurred fetching tickets :(`, 'Error');
+
+            return Observable.of(this.ticketsActions.fetchTicketsFail())
+          });
       });
   };
 
@@ -29,7 +37,11 @@ export class TicketsEpic {
       .mergeMap(({id}) => {
         return this.ticketsService.fetchTicketById(id)
           .map(ticket => this.ticketsActions.fetchSelectedTicketSuccess(ticket))
-          .catch(err => Observable.of(this.ticketsActions.fetchSelectedTicketFail()));
+          .catch(() => {
+            this.snotifyService.error(`An error occurred fetching ticket :(`, 'Error');
+
+            return Observable.of(this.ticketsActions.fetchSelectedTicketFail())
+          });
       });
   };
 
@@ -39,8 +51,16 @@ export class TicketsEpic {
         const {selectedTicket} = store.getState().tickets;
 
         return this.ticketsService.checkTicket(selectedTicket)
-          .map(ticket => this.ticketsActions.checkTicketSuccess())
-          .catch(err => Observable.of(this.ticketsActions.checkTicketFail()));
+          .map(() => {
+            this.snotifyService.success('Ticket has been checked!', 'Success');
+
+            return this.ticketsActions.checkTicketSuccess()
+          })
+          .catch(() => {
+            this.snotifyService.error(`An error occurred checking ticket :(`, 'Error');
+
+            return Observable.of(this.ticketsActions.checkTicketFail())
+          });
       });
   };
 
@@ -52,9 +72,16 @@ export class TicketsEpic {
         return this.ticketsService.deleteTicket(selectedTicket)
           .map(() => {
             this.router.navigateByUrl('/');
+
+            this.snotifyService.success('Ticket has been deleted!', 'Success');
+
             return this.ticketsActions.deleteTicketSuccess(selectedTicket)
           })
-          .catch(err => Observable.of(this.ticketsActions.deleteTicketFail()));
+          .catch(() => {
+            this.snotifyService.error(`An error occurred deleting ticket :(`, 'Error');
+
+            return Observable.of(this.ticketsActions.deleteTicketFail())
+          });
       });
   };
 
@@ -65,12 +92,18 @@ export class TicketsEpic {
 
         return this.ticketsService.addLinesToTicket(selectedTicket, addLinesTotalLines)
           .mergeMap(() => {
+            this.snotifyService.success(`Added ${addLinesTotalLines} lines successfully!`, 'Success');
+
             return Observable.concat(
               Observable.of(this.ticketsActions.addLinesSuccess()),
               Observable.of(this.ticketsActions.fetchSelectedTicket(selectedTicket.id)),
             )
           })
-          .catch(err => Observable.of(this.ticketsActions.addLinesFail()));
+          .catch(() => {
+            this.snotifyService.error(`An error occurred adding lines to ticket :(`, 'Error');
+
+            return Observable.of(this.ticketsActions.addLinesFail())
+          });
       });
   };
 

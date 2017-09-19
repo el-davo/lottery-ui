@@ -8,10 +8,13 @@ import {Injectable} from '@angular/core';
 import {Observable} from 'rxjs/Observable';
 import {NavbarActions} from './navbar.actions';
 import {TicketsService} from '../tickets/tickets.service';
+import {SnotifyService} from 'ng-snotify';
 
 @Injectable()
 export class NavbarEpic {
-  constructor(private navbarActions: NavbarActions, private ticketsService: TicketsService) {
+  constructor(private snotifyService: SnotifyService,
+              private navbarActions: NavbarActions,
+              private ticketsService: TicketsService) {
   }
 
   createTicket = (action$, store) => {
@@ -19,8 +22,16 @@ export class NavbarEpic {
       .mergeMap(() => {
         const {totalLines} = store.getState().navbar;
         return this.ticketsService.createTicket(totalLines)
-          .map(ticket => this.navbarActions.createTicketSuccess(ticket))
-          .catch(err => Observable.of(this.navbarActions.createTicketFail()));
+          .map(ticket => {
+            this.snotifyService.success(`Ticket with ${totalLines} lines created successfully!`, 'Success');
+
+            return this.navbarActions.createTicketSuccess(ticket)
+          })
+          .catch(() => {
+            this.snotifyService.error(`An error occurred creating ticket :(`, 'Error');
+
+            return Observable.of(this.navbarActions.createTicketFail())
+          });
       });
   };
 }
