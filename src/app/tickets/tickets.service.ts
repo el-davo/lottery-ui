@@ -23,7 +23,9 @@ export class TicketsService {
   }
 
   checkTicket(ticket: Ticket) {
-    return this.http.patch(`${urls.apiUrl}/tickets`, {...ticket, checked: true})
+    const checkingTicket = {...ticket};
+    delete checkingTicket.lines;
+    return this.http.patch(`${urls.apiUrl}/tickets`, {...checkingTicket, checked: true})
       .map(res => res.json());
   }
 
