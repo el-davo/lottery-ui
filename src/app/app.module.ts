@@ -23,6 +23,7 @@ import {TicketsModule} from './tickets/tickets.module';
 import {TicketsEpic} from './tickets/tickets.epic';
 import {NavbarModule} from './navbar/navbar.module';
 import {NavbarEpic} from './navbar/navbar.epic';
+import {SnotifyModule, SnotifyService} from 'ng-snotify';
 
 @NgModule({
   declarations: [
@@ -39,11 +40,13 @@ import {NavbarEpic} from './navbar/navbar.epic';
     NgReduxFormModule,
     TicketsModule,
     NgReduxRouterModule,
-    NavbarModule
+    NavbarModule,
+    SnotifyModule
   ],
   providers: [
     TicketsEpic,
-    NavbarEpic
+    NavbarEpic,
+    SnotifyService
   ],
   bootstrap: [AppComponent]
 })

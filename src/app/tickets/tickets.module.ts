@@ -12,6 +12,7 @@ import {ConfirmDeleteModalComponent} from './confirm-delete-modal/confirm-delete
 import {AddLinesModalComponent} from './add-lines-modal/add-lines-modal.component';
 import {FormsModule} from '@angular/forms';
 import {NgReduxFormModule} from '@angular-redux/form/dist/source';
+import {SnotifyService} from 'ng-snotify';
 
 @NgModule({
   imports: [
