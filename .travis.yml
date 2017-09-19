@@ -1,18 +1,21 @@
 language: node_js
 node_js:
-  - "6"
-  - "7"
-
+- '7'
 install:
-  - yarn
-  - npm run lint
-
-test:
-  - npm run test
-
+- yarn
+- yarn run lint
+- npm run build
+- cp nginx.conf dist/nginx.conf
+- cp mime.types dist/mime.types
 cache:
   yarn: true
-
-before_install:
- - export DISPLAY=:99.0
- - sh -e /etc/init.d/xvfb start
+deploy:
+  provider: cloudfoundry
+  api: api.run.pivotal.io
+  username: david.ahern26@gmail.com
+  password:
+    secure: TBTR75LJeRJ5vDIJ2+tPv/o8AbUyRCdADkk+jkwYWQzmlSdTLh30PXVs2ZWz1phsWPD0gyDccfk7/k5M5Db50hZTq/Fqdqw7xv1SOERSsvfVUkqWQETOHC9YGyFuuBu9n2qFd4nAqoyMKR1hqIjdYYCLp2Sx9VebXd4hZeu2ojlGN06sWSzvP0VgoKuJTEC9XWhUgiyBLgnYwkieNUZE4jzaGDXLkj1iLW9+CNeYbbxxw5F7agUzDCZGAKxKow/2DIqlk5Xk4Rwz7Swl060ox8If8jxgCsOJhdnpBLQkoT4Re8w5XvD+iMgbNfaWPaex48wv70qZm+7tRtbtiIaWHr5Pl9wXilJ07kke14IYgYPLBVpVuYkiRjJMpin6BXSsWQTjzlnMSKVY9VrYtGhe1ZVWiYjj7oBkneRMylc7cB2UnTVTT4f8CrhY/fjKMe0AcP8IVfaL5vk7mqNOJ00eKR8T46k4icVJSvYLFb0bV7tZplW/jiFYw8V/wHwGOKO1vqqeFszODXvmM/aZ8vNVAIRGyJBfQQtZbChr+W++sL+xMCFffmKfo5x860/gc620WyN5YuqxWTCy5zpb6UFWSbIrX2tMXD2NWzUWT0pahpylTj6q5qLUqsHMlX7BpbZX0FZHgmirGrP4Z2ofx71m/agu2MI2JBnauUKHan5KvI8=
+  organization: thor
+  space: prod
+  on:
+    branch: master
