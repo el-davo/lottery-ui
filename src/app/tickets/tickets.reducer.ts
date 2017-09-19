@@ -30,7 +30,8 @@ export const ticketsReducer = (state: TicketsState = ticketsState, action): Tick
       return {
         ...state, isCheckingTicket: false, showConfirmCheckModal: false,
         uncheckedTickets: state.uncheckedTickets.filter(ticket => ticket.id !== state.selectedTicket.id),
-        checkTickets: [...state.checkedTickets, state.selectedTicket]
+        checkedTickets: [...state.checkedTickets, state.selectedTicket],
+        selectedTicket: {...state.selectedTicket, checked: true}
       };
     case TicketsActions.CHECK_TICKET_FAIL:
       return {...state, isCheckingTicket: false};
