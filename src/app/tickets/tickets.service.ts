@@ -2,7 +2,7 @@ import {Injectable} from '@angular/core';
 import {urls} from '../common/urls';
 import {Http} from '@angular/http';
 import {Observable} from 'rxjs/Observable';
-import {Ticket} from './tickets.state';
+import {Line, Ticket} from './tickets.state';
 
 @Injectable()
 export class TicketsService {
@@ -31,4 +31,8 @@ export class TicketsService {
     return this.http.delete(`${urls.apiUrl}/tickets/${ticket.id}`).map(res => res.json());
   }
 
+  addLinesToTicket(ticket: Ticket, totalLines): Observable<Line[]> {
+    return this.http.post(`${urls.apiUrl}/bulkCreateLines`, {ticketId: ticket.id, totalLines})
+      .map(res => res.json());
+  }
 }

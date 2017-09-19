@@ -26,6 +26,13 @@ export class TicketsActions {
   static DELETE_TICKET_SUCCESS = 'tickets/DELETE_TICKETS_SUCCESS';
   static DELETE_TICKET_FAIL = 'tickets/DELETE_TICKET_FAIL';
 
+  static SHOW_ADD_LINES_MODAL = 'tickets/SHOW_ADD_LINES_MODAL';
+  static HIDE_ADD_LINES_MODAL = 'tickets/HIDE_ADD_LINES_MODAL';
+
+  static ADD_LINES = 'tickets/ADD_LINES';
+  static ADD_LINES_SUCCESS = 'tickets/ADD_LINES_SUCCESS';
+  static ADD_LINES_FAIL = 'tickets/ADD_LINES_FAIL';
+
   fetchTickets() {
     return {type: TicketsActions.FETCH_TICKETS};
   }
@@ -70,8 +77,8 @@ export class TicketsActions {
     return {type: TicketsActions.CHECK_TICKET_FAIL};
   }
 
-  showDeleteTicketModal(ticket: Ticket) {
-    return {type: TicketsActions.SHOW_DELETE_TICKET_MODAL, ticket};
+  showDeleteTicketModal() {
+    return {type: TicketsActions.SHOW_DELETE_TICKET_MODAL};
   }
 
   hideDeleteTicketModal() {
@@ -88,5 +95,25 @@ export class TicketsActions {
 
   deleteTicketFail() {
     return {type: TicketsActions.DELETE_TICKET_FAIL};
+  }
+
+  showAddLinesModal() {
+    return {type: TicketsActions.SHOW_ADD_LINES_MODAL};
+  }
+
+  hideAddLinesModal() {
+    return {type: TicketsActions.HIDE_ADD_LINES_MODAL};
+  }
+
+  addLines() {
+    return {type: TicketsActions.ADD_LINES};
+  }
+
+  addLinesSuccess() {
+    return {type: TicketsActions.ADD_LINES_SUCCESS};
+  }
+
+  addLinesFail() {
+    return {type: TicketsActions.ADD_LINES_FAIL};
   }
 }

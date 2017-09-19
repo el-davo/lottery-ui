@@ -3,8 +3,11 @@ export const ticketsState: TicketsState = {
   isFetchingSelectedTicket: false,
   showConfirmCheckModal: false,
   showDeleteTicketModal: false,
+  showAddLinesModal: false,
+  addLinesTotalLines: 5,
   isCheckingTicket: false,
   isDeletingTicket: false,
+  isAddingLines: false,
   checkedTickets: [],
   uncheckedTickets: [],
   selectedTicket: null
@@ -15,8 +18,11 @@ export interface TicketsState {
   isFetchingSelectedTicket: boolean;
   showConfirmCheckModal: boolean;
   showDeleteTicketModal: boolean;
+  showAddLinesModal: boolean;
+  addLinesTotalLines: number;
   isCheckingTicket: boolean;
   isDeletingTicket: boolean;
+  isAddingLines: boolean;
   checkedTickets: Ticket[];
   uncheckedTickets: Ticket[];
   selectedTicket: Ticket;

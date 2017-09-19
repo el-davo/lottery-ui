@@ -52,6 +52,16 @@ export const ticketsReducer = (state: TicketsState = ticketsState, action): Tick
       };
     case TicketsActions.DELETE_TICKET_FAIL:
       return {...state, isDeletingTicket: false};
+    case TicketsActions.SHOW_ADD_LINES_MODAL:
+      return {...state, showAddLinesModal: true};
+    case TicketsActions.HIDE_ADD_LINES_MODAL:
+      return {...state, showAddLinesModal: false};
+    case TicketsActions.ADD_LINES:
+      return {...state, isAddingLines: true};
+    case TicketsActions.ADD_LINES_SUCCESS:
+      return {...state, isAddingLines: false, showAddLinesModal: false};
+    case TicketsActions.ADD_LINES_FAIL:
+      return {...state, isAddingLines: false};
     default:
       return state;
   }
