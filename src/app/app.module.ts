@@ -14,7 +14,6 @@ import * as reduxImmutableStateInvariant from 'redux-immutable-state-invariant';
 import * as persistState from 'redux-localstorage'
 import {environment} from '../environments/environment';
 import {AppComponent} from './app.component';
-import {ClarityModule} from 'clarity-angular';
 import {routes} from './routes';
 
 import 'clarity-icons';
@@ -35,7 +34,6 @@ import {SnotifyModule, SnotifyService} from 'ng-snotify';
     HttpModule,
     FormsModule,
     BrowserAnimationsModule,
-    ClarityModule.forRoot(),
     NgReduxModule,
     NgReduxFormModule,
     TicketsModule,

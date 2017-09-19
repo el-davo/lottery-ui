@@ -1,0 +1,4 @@
+name: lotery-ui
+instances: 1
+memory: 128M
+buildpack: https://github.com/cloudfoundry/staticfile-buildpack.git
