@@ -5,7 +5,7 @@ const urlsEnv = {
     apiUrl: 'http://localhost:3000/api'
   },
   production: {
-    apiUrl: 'https:///linkcouch-backend.cfapps.io/api'
+    apiUrl: 'https://lottery-api.cfapps.io//api'
   }
 };
 
