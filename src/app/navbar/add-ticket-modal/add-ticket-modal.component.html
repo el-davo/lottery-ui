@@ -30,7 +30,8 @@
             *ngIf="totalLines?.errors?.required">Ok
     </button>
     <button type="button"
-            class="btn btn-primary"
+            class="btn btn-info-outline"
+            [clrLoading]="(navbar$ | async)?.isCreatingTicket"
             *ngIf="!totalLines?.errors?.required"
             (click)="createTicket()">Ok
     </button>

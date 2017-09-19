@@ -12,8 +12,9 @@ import {ConfirmDeleteModalComponent} from './confirm-delete-modal/confirm-delete
 import {AddLinesModalComponent} from './add-lines-modal/add-lines-modal.component';
 import {FormsModule} from '@angular/forms';
 import {NgReduxFormModule} from '@angular-redux/form/dist/source';
-import {SnotifyService} from 'ng-snotify';
-import { EmptyComponent } from './empty/empty.component';
+import {ClrLoadingModule} from 'clarity-angular/utils/loading/loading.module';
+import {EmptyComponent} from './empty/empty.component';
+import {ClarityModule} from 'clarity-angular';
 
 @NgModule({
   imports: [
@@ -22,7 +23,9 @@ import { EmptyComponent } from './empty/empty.component';
     RouterModule,
     ClrModalModule,
     FormsModule,
-    NgReduxFormModule
+    NgReduxFormModule,
+    ClrLoadingModule,
+    ClarityModule
   ],
   providers: [
     TicketsActions,

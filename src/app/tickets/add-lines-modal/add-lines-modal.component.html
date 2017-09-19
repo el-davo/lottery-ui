@@ -31,6 +31,7 @@
     </button>
     <button type="button"
             class="btn btn-primary"
+            [clrLoading]="(tickets$ | async)?.isAddingLines"
             *ngIf="!addLinesTotalLines?.errors?.required"
             (click)="addLines()">Ok
     </button>

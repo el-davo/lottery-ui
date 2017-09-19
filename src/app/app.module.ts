@@ -23,6 +23,7 @@ import {TicketsEpic} from './tickets/tickets.epic';
 import {NavbarModule} from './navbar/navbar.module';
 import {NavbarEpic} from './navbar/navbar.epic';
 import {SnotifyModule, SnotifyService} from 'ng-snotify';
+import {ClarityModule} from 'clarity-angular';
 
 @NgModule({
   declarations: [
@@ -39,7 +40,8 @@ import {SnotifyModule, SnotifyService} from 'ng-snotify';
     TicketsModule,
     NgReduxRouterModule,
     NavbarModule,
-    SnotifyModule
+    SnotifyModule,
+    ClarityModule
   ],
   providers: [
     TicketsEpic,
