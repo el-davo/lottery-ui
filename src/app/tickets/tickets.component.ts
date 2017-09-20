@@ -16,5 +16,7 @@ export class TicketsComponent implements OnInit {
   }
 
   @dispatch()
-  ngOnInit = () => this.ticketsActions.fetchTickets();
+  ngOnInit() {
+    return this.ticketsActions.fetchTickets();
+  }
 }
