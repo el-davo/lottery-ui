@@ -34,7 +34,10 @@ export class TicketsService {
   }
 
   addLinesToTicket(ticket: Ticket, totalLines): Observable<Line[]> {
-    return this.http.post(`${urls.apiUrl}/bulkCreateLines`, {ticketId: ticket.id, totalLines})
+    return this.http.post(`${urls.apiUrl}/bulkCreateLines`, {
+      ticketId: ticket.id,
+      totalLines: parseInt(totalLines, 0)
+    })
       .map(res => res.json());
   }
 }
