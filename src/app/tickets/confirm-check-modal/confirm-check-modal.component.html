@@ -3,6 +3,8 @@
   <h3 class="modal-title">Warning</h3>
   <div class="modal-body">
     Are you sure you want to check this ticket - "{{(tickets$ | async)?.selectedTicket?.createdAt | date:'medium'}}"
+    <br />
+    By doing so you will no longer be able to update this ticket
   </div>
   <div class="modal-footer">
     <button type="button" class="btn btn-outline" (click)="hideModal()">Cancel</button>

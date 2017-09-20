@@ -2,7 +2,7 @@
            [clrModalOpen]="(tickets$ | async)?.showDeleteTicketModal">
   <h3 class="modal-title">Warning</h3>
   <div class="modal-body">
-    Are you sure you want to check this ticket - "{{(tickets$ | async)?.selectedTicket?.createdAt | date:'medium'}}"
+    Are you sure you want to delete this ticket - "{{(tickets$ | async)?.selectedTicket?.createdAt | date:'medium'}}"
   </div>
   <div class="modal-footer">
     <button type="button" class="btn btn-outline" (click)="hideModal()">Cancel</button>
